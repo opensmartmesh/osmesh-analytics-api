@@ -25,11 +25,11 @@ def measure(request):
     #M = Measurement(uid = uid, packettime = A.packettime, node = A.node, sensors=A.sensors)
 
     # --- Converting the date
-    packettime = datetime.fromtimestamp(float(R["packettime"])/1000.0).strftime('%Y-%m-%d %H:%M:%S.%f')
+    packettime = datetime.fromtimestamp(float(R["packettime"])).strftime('%Y-%m-%d %H:%M:%S.%f')
     print("DEBUG ---- packettime "+packettime)
 
     # --- Saving in database 
-    M = Measurement(packettime = packettime, node = R["node"], sensor_name=R["sensors"][0]["name"], sensor_value=R["sensors"][0]["value"])
+    M = Measurement(packettime = packettime, node = R["nodeid"], sensor_name=R["sensors"][0]["name"], sensor_value=R["sensors"][0]["value"])
     b = M.save()
 
     print("DEBUG --- saved in DB: "+str(b))
