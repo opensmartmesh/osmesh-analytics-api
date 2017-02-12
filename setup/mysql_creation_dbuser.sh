@@ -7,7 +7,7 @@ DBNAME="osmesh_api"
 # calling mysql
 echo "CREATE database ${DBNAME};
 CREATE USER '${USERNAME}'@'localhost' IDENTIFIED BY '${USERPASS}';
-GRANT select,insert,update on ${DBNAME}.* TO '${USERNAME}'@'localhost';" > mysql_creation_tmp.sql
+GRANT index,create,delete,alter,update,insert,select on ${DBNAME}.* TO '${USERNAME}'@'localhost';" > mysql_creation_tmp.sql
 
 mysql -u root -p < mysql_creation_tmp.sql
 
